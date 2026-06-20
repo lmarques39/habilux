@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -12,8 +13,14 @@ const navLinks = [
   { href: "/contactos", label: "Contactos" },
 ];
 
+function isActive(href: string, pathname: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-stone-200">
@@ -35,7 +42,11 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className="text-sm font-medium text-stone-600 hover:text-gold-500 transition-colors duration-200"
+                className={`text-sm font-medium transition-colors duration-200 ${
+                  isActive(href, pathname)
+                    ? "text-gold-500"
+                    : "text-stone-600 hover:text-gold-500"
+                }`}
               >
                 {label}
               </Link>
@@ -70,7 +81,11 @@ export default function Header() {
                 key={href}
                 href={href}
                 onClick={() => setMobileOpen(false)}
-                className="text-base font-medium text-stone-700 hover:text-gold-500 transition-colors duration-200"
+                className={`text-base font-medium transition-colors duration-200 ${
+                  isActive(href, pathname)
+                    ? "text-gold-500"
+                    : "text-stone-700 hover:text-gold-500"
+                }`}
               >
                 {label}
               </Link>

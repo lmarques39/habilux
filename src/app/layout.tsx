@@ -15,6 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL ?? "https://habilux.vercel.app"
+  ),
   title: "Habilux — Investimentos Imobiliários",
   description:
     "Mediação imobiliária, promoção bancária e certificados energéticos em Viana do Castelo. Mais de 25 anos de experiência.",

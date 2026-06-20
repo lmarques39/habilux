@@ -1,0 +1,220 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { MapPin, BedDouble, Square, Phone, ArrowLeft } from "lucide-react";
+import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
+import Badge from "@/components/atoms/Badge";
+import { properties } from "@/data/properties";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return properties.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const property = properties.find((p) => p.slug === slug);
+  if (!property) return {};
+
+  const price = new Intl.NumberFormat("pt-PT", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(property.price);
+
+  return {
+    title: `${property.title} — Habilux`,
+    description: `${property.type} em ${property.location}. ${price}. Habilux — Investimentos Imobiliários, Viana do Castelo.`,
+  };
+}
+
+function formatPrice(price: number) {
+  return new Intl.NumberFormat("pt-PT", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
+export default async function PropertyDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const property = properties.find((p) => p.slug === slug);
+  if (!property) notFound();
+
+  const { title, location, price, type, bedrooms, area, image } = property;
+
+  return (
+    <>
+      {/* Page header */}
+      <section className="relative bg-stone-900 pt-20 pb-20 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-10">
+          {/* Breadcrumb */}
+          <Link
+            href="/propriedades"
+            className="inline-flex items-center gap-2 text-stone-400 hover:text-gold-400 text-sm font-medium transition-colors duration-200 mb-8"
+          >
+            <ArrowLeft size={14} />
+            Voltar às propriedades
+          </Link>
+
+          <div className="flex flex-wrap items-start gap-4 mb-4">
+            <Badge variant="gold">{type}</Badge>
+          </div>
+
+          <Heading as="h1" size="4xl" className="text-white mb-4 max-w-3xl">
+            {title}
+          </Heading>
+
+          <div className="flex items-center gap-1.5 text-stone-400 text-base mb-6">
+            <MapPin size={15} className="shrink-0 text-gold-400" />
+            <span>{location}</span>
+          </div>
+
+          <p className="font-serif text-3xl sm:text-4xl font-bold text-gold-400">
+            {formatPrice(price)}
+          </p>
+        </div>
+      </section>
+
+      {/* Main content */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+            {/* Image + details */}
+            <div className="lg:col-span-2 flex flex-col gap-8">
+              {/* Image */}
+              <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
+                {image ? (
+                  <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    priority
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-stone-100">
+                    <Square size={48} className="text-stone-300" strokeWidth={1} />
+                    <span className="text-stone-400 text-sm">
+                      Imagens disponíveis brevemente
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Property details grid */}
+              {(bedrooms || area) && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-b border-stone-100 py-8">
+                  {bedrooms && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center gap-2 text-stone-400">
+                        <BedDouble size={16} />
+                        <span className="text-xs font-semibold uppercase tracking-widest">
+                          Quartos
+                        </span>
+                      </div>
+                      <span className="font-serif text-2xl font-bold text-stone-900">
+                        {bedrooms}
+                      </span>
+                    </div>
+                  )}
+                  {area && (
+                    <div className="flex flex-col gap-1.5">
+                      <div className="flex items-center gap-2 text-stone-400">
+                        <Square size={16} />
+                        <span className="text-xs font-semibold uppercase tracking-widest">
+                          Área
+                        </span>
+                      </div>
+                      <span className="font-serif text-2xl font-bold text-stone-900">
+                        {area} m²
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex flex-col gap-1.5">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-stone-400">
+                      Tipo
+                    </span>
+                    <span className="font-serif text-2xl font-bold text-stone-900">
+                      {type}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Description placeholder */}
+              <div>
+                <Eyebrow className="mb-4">Descrição</Eyebrow>
+                <div className="flex flex-col gap-3">
+                  <Text muted>
+                    Para mais informações sobre este imóvel, incluindo visitas e
+                    disponibilidade, entre em contacto connosco diretamente. A
+                    nossa equipa está disponível para responder a todas as suas
+                    questões.
+                  </Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact sidebar */}
+            <div className="lg:col-span-1">
+              <div className="bg-stone-50 p-8 sticky top-28">
+                <Eyebrow className="mb-4">Interessado?</Eyebrow>
+                <Heading as="h2" size="xl" className="text-stone-900 mb-2">
+                  Fale connosco
+                </Heading>
+                <Text muted size="sm" className="mb-6">
+                  A nossa equipa responde rapidamente e trata de tudo por si.
+                </Text>
+
+                <a
+                  href="tel:+351258338047"
+                  className="flex items-center gap-3 bg-gold-400 hover:bg-gold-500 text-stone-900 font-semibold px-6 py-4 transition-colors duration-200 mb-4 w-full"
+                >
+                  <Phone size={18} />
+                  258 338 047
+                </a>
+
+                <Link
+                  href="/contactos"
+                  className="flex items-center justify-center border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-semibold px-6 py-4 transition-colors duration-200 w-full text-sm"
+                >
+                  Enviar mensagem
+                </Link>
+
+                <div className="mt-8 pt-8 border-t border-stone-200">
+                  <p className="text-xs text-stone-400 leading-relaxed">
+                    Habilux — Mediação Imobiliária
+                    <br />
+                    Licença AMI n.º 11192
+                    <br />
+                    Viana do Castelo
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
