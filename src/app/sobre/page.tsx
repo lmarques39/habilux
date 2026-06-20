@@ -26,7 +26,7 @@ const values = [
   },
 ];
 
-export default function SobrePage() {
+export default function AboutPage() {
   return (
     <>
       {/* Page header */}

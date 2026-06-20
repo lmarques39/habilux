@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
-import PropriedadesClient from "@/components/organisms/PropriedadesClient";
+import PropertiesClient from "@/components/organisms/PropertiesClient";
 
 export const metadata: Metadata = {
   title: "Propriedades — Habilux",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Imóveis disponíveis para compra e arrendamento em Viana do Castelo. Apartamentos, moradias, espaços comerciais e terrenos.",
 };
 
-export default function PropriedadesPage() {
+export default function PropertiesPage() {
   return (
     <>
       {/* Page header — server rendered */}
@@ -34,7 +34,7 @@ export default function PropriedadesPage() {
       </section>
 
       {/* Interactive listings — client component */}
-      <PropriedadesClient />
+      <PropertiesClient />
     </>
   );
 }

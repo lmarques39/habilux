@@ -13,7 +13,7 @@ const filters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Terreno", value: "Terreno" },
 ];
 
-export default function PropriedadesClient() {
+export default function PropertiesClient() {
   const [active, setActive] = useState<PropertyType | "Todos">("Todos");
 
   const filtered =

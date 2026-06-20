@@ -14,7 +14,7 @@ const schedule = [
   { day: "Domingo", hours: "Encerrado" },
 ];
 
-export default function ContactosPage() {
+export default function ContactsPage() {
   return (
     <>
       {/* Page header */}

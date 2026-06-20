@@ -59,7 +59,7 @@ const services: Service[] = [
   },
 ];
 
-export default function ServicosPage() {
+export default function ServicesPage() {
   return (
     <>
       {/* Page header */}
