@@ -1,8 +1,16 @@
 import type { MetadataRoute } from "next";
+import { properties } from "@/data/properties";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://habilux.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const propertyEntries: MetadataRoute.Sitemap = properties.map((p) => ({
+    url: `${BASE_URL}/propriedades/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
   return [
     {
       url: BASE_URL,
@@ -34,5 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.7,
     },
+    ...propertyEntries,
   ];
 }

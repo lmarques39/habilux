@@ -6,7 +6,6 @@ type Size = "sm" | "md" | "lg";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
-  asChild?: boolean;
 }
 
 const variantClasses: Record<Variant, string> = {

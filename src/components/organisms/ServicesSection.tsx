@@ -1,6 +1,6 @@
-import { Home, Landmark, Zap } from "lucide-react";
+import Link from "next/link";
+import { Home, Landmark, Zap, type LucideIcon } from "lucide-react";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
-import { type LucideIcon } from "lucide-react";
 
 interface Service {
   icon: LucideIcon;
@@ -65,9 +65,12 @@ export default function ServicesSection() {
                 </Text>
               </div>
               <div className="mt-auto pt-4 border-t border-stone-100">
-                <span className="text-xs font-semibold uppercase tracking-widest text-gold-500 group-hover:text-gold-600 transition-colors duration-200">
+                <Link
+                  href="/servicos"
+                  className="text-xs font-semibold uppercase tracking-widest text-gold-500 group-hover:text-gold-600 transition-colors duration-200"
+                >
                   Saber mais →
-                </span>
+                </Link>
               </div>
             </div>
           ))}

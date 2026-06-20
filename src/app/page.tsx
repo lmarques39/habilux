@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HeroSection from "@/components/organisms/HeroSection";
+import ProofStrip from "@/components/organisms/ProofStrip";
+import ServicesSection from "@/components/organisms/ServicesSection";
+import FeaturedProperties from "@/components/organisms/FeaturedProperties";
 
 export const metadata: Metadata = {
   title: "Habilux — Investimentos Imobiliários em Viana do Castelo",
   description:
     "Mediação imobiliária, promoção bancária e certificados energéticos em Viana do Castelo. Mais de 25 anos de experiência. AMI 11192.",
 };
-import ProofStrip from "@/components/organisms/ProofStrip";
-import ServicesSection from "@/components/organisms/ServicesSection";
-import FeaturedProperties from "@/components/organisms/FeaturedProperties";
 
 export default function Home() {
   return (
