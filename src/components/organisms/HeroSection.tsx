@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Building2 } from "lucide-react";
 import { Eyebrow } from "@/components/atoms/Typography";
+import StatBlock from "@/components/molecules/StatBlock";
 
 export default function HeroSection() {
   return (
@@ -60,14 +61,7 @@ export default function HeroSection() {
             { value: "AMI", label: "Licença 11192" },
             { value: "3", label: "Serviços especializados" },
           ].map(({ value, label }) => (
-            <div key={label} className="flex flex-col gap-1">
-              <span className="font-serif text-3xl font-bold text-gold-400">
-                {value}
-              </span>
-              <span className="text-xs text-stone-500 uppercase tracking-wide">
-                {label}
-              </span>
-            </div>
+            <StatBlock key={label} value={value} label={label} inverted />
           ))}
         </div>
       </div>

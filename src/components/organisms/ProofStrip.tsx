@@ -1,10 +1,6 @@
-interface Stat {
-  value: string;
-  label: string;
-  detail?: string;
-}
+import StatBlock from "@/components/molecules/StatBlock";
 
-const stats: Stat[] = [
+const stats = [
   { value: "25+", label: "Anos de experiência", detail: "Desde 2000" },
   { value: "AMI", label: "Licença 11192", detail: "Mediação certificada" },
   { value: "3", label: "Serviços especializados", detail: "Imobiliário · Bancário · Energético" },
@@ -31,20 +27,14 @@ export default function ProofStrip() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 sm:divide-x sm:divide-stone-800">
           {stats.map(({ value, label, detail }) => (
-            <div
+            <StatBlock
               key={label}
-              className="flex flex-col items-center text-center sm:px-12"
-            >
-              <span className="font-serif text-5xl font-bold text-gold-400 leading-none mb-3">
-                {value}
-              </span>
-              <span className="text-white font-semibold text-sm uppercase tracking-widest mb-1">
-                {label}
-              </span>
-              {detail && (
-                <span className="text-stone-500 text-xs">{detail}</span>
-              )}
-            </div>
+              value={value}
+              label={label}
+              detail={detail}
+              inverted
+              className="items-center text-center sm:px-12"
+            />
           ))}
         </div>
       </div>
