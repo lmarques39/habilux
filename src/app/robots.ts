@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://habilux.pt/sitemap.xml",
+    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL ?? "https://habilux.vercel.app"}/sitemap.xml`,
   };
 }

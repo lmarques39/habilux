@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://habilux.pt";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://habilux.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
