@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
 import PropertyCard, { type Property, type PropertyType } from "@/components/molecules/PropertyCard";
 
-const filters: { label: string; value: PropertyType | "Todos" }[] = [
+const typeFilters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Todos", value: "Todos" },
   { label: "Apartamento", value: "Apartamento" },
   { label: "Moradia", value: "Moradia" },
@@ -13,12 +13,26 @@ const filters: { label: string; value: PropertyType | "Todos" }[] = [
 ];
 
 export default function PropertiesClient({ properties }: { properties: Property[] }) {
-  const [active, setActive] = useState<PropertyType | "Todos">("Todos");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const filtered =
-    active === "Todos"
-      ? properties
-      : properties.filter((p) => p.type === active);
+  const activeType = (searchParams.get("tipo") as PropertyType | null) ?? "Todos";
+
+  function setFilter(key: string, value: string | null) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (!value || value === "Todos") {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
+    const qs = params.toString();
+    router.replace(pathname + (qs ? `?${qs}` : ""), { scroll: false });
+  }
+
+  const filtered = activeType === "Todos"
+    ? properties
+    : properties.filter((p) => p.type === activeType);
 
   return (
     <section className="bg-white py-16 lg:py-24">
@@ -26,12 +40,12 @@ export default function PropertiesClient({ properties }: { properties: Property[
         {/* Filter bar */}
         <div className="flex flex-wrap items-center gap-3 mb-10">
           <SlidersHorizontal size={15} className="text-stone-400 shrink-0" />
-          {filters.map(({ label, value }) => (
+          {typeFilters.map(({ label, value }) => (
             <button
               key={value}
-              onClick={() => setActive(value)}
+              onClick={() => setFilter("tipo", value)}
               className={`px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
-                active === value
+                activeType === value
                   ? "bg-stone-900 text-white border-stone-900"
                   : "bg-white text-stone-600 border-stone-200 hover:border-stone-900 hover:text-stone-900"
               }`}
@@ -57,7 +71,7 @@ export default function PropertiesClient({ properties }: { properties: Property[
               Nenhum imóvel encontrado.
             </p>
             <button
-              onClick={() => setActive("Todos")}
+              onClick={() => setFilter("tipo", null)}
               className="text-sm text-gold-500 font-semibold hover:text-gold-600 underline underline-offset-4"
             >
               Ver todos os imóveis

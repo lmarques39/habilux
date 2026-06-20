@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
 import PropertiesClient from "@/components/organisms/PropertiesClient";
@@ -39,8 +40,10 @@ export default async function PropertiesPage() {
         </div>
       </section>
 
-      {/* Interactive listings — client component receives server-fetched data */}
-      <PropertiesClient properties={properties} />
+      {/* Suspense required: useSearchParams inside a prerendered page needs a boundary */}
+      <Suspense fallback={<div className="bg-white py-16 lg:py-24" />}>
+        <PropertiesClient properties={properties} />
+      </Suspense>
     </>
   );
 }
