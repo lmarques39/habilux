@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
+import ContactForm from "@/components/organisms/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contactos — Habilux",
@@ -41,15 +42,23 @@ export default function ContactsPage() {
         </div>
       </section>
 
-      {/* Content */}
+      {/* Form + contact info */}
       <section className="bg-white py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24">
+
+            {/* Contact form */}
+            <div className="lg:col-span-3">
+              <Eyebrow className="mb-4">Formulário de contacto</Eyebrow>
+              <Heading as="h2" size="2xl" className="text-stone-900 mb-8">
+                Envie-nos uma mensagem
+              </Heading>
+              <ContactForm />
+            </div>
 
             {/* Contact info */}
-            <div className="flex flex-col gap-10">
+            <div className="lg:col-span-2 flex flex-col gap-10">
 
-              {/* Address */}
               <div>
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
                   <MapPin size={13} />
@@ -69,7 +78,6 @@ export default function ContactsPage() {
                 </a>
               </div>
 
-              {/* Phone */}
               <div>
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
                   <Phone size={13} />
@@ -86,7 +94,6 @@ export default function ContactsPage() {
                 </a>
               </div>
 
-              {/* Email */}
               <div>
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
                   <Mail size={13} />
@@ -100,7 +107,6 @@ export default function ContactsPage() {
                 </a>
               </div>
 
-              {/* Schedule */}
               <div>
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
                   <Clock size={13} />
@@ -116,28 +122,27 @@ export default function ContactsPage() {
                 </div>
               </div>
 
-              {/* AMI */}
               <p className="text-xs text-stone-400 uppercase tracking-widest border-t border-stone-100 pt-6">
                 Licença AMI n.º 11192
               </p>
             </div>
-
-            {/* Map */}
-            <div className="h-[420px] lg:h-full lg:min-h-[500px] rounded-none overflow-hidden ring-1 ring-stone-200">
-              <iframe
-                src="https://maps.google.com/maps?q=Viana+do+Castelo+Portugal&z=14&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localização Habilux — Viana do Castelo"
-              />
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Map */}
+      <div className="h-[400px] ring-1 ring-stone-200">
+        <iframe
+          src="https://maps.google.com/maps?q=Viana+do+Castelo+Portugal&z=14&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Localização Habilux — Viana do Castelo"
+        />
+      </div>
     </>
   );
 }
