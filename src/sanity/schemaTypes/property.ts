@@ -34,6 +34,19 @@ export const propertyType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "transaction",
+      title: "Negócio",
+      type: "string",
+      options: {
+        list: [
+          { title: "Venda", value: "venda" },
+          { title: "Arrendamento", value: "arrendamento" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "venda",
+    }),
+    defineField({
       name: "price",
       title: "Preço (€)",
       type: "number",

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
-import PropertyCard from "@/components/molecules/PropertyCard";
-import { featuredProperties } from "@/data/properties";
+import PropertyCard, { type Property } from "@/components/molecules/PropertyCard";
+import { client } from "@/sanity/lib/client";
+import { featuredPropertiesQuery } from "@/sanity/lib/queries";
 
-export default function FeaturedProperties() {
+export default async function FeaturedProperties() {
+  const featuredProperties = await client.fetch<Property[]>(featuredPropertiesQuery);
   return (
     <section className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

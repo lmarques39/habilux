@@ -5,12 +5,14 @@ import { notFound } from "next/navigation";
 import { MapPin, BedDouble, Square, Phone, ArrowLeft } from "lucide-react";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
 import Badge from "@/components/atoms/Badge";
-import { properties } from "@/data/properties";
+import { client } from "@/sanity/lib/client";
+import { propertyBySlugQuery, allPropertySlugsQuery } from "@/sanity/lib/queries";
 
-export const dynamicParams = false;
+export const revalidate = 3600;
 
-export function generateStaticParams() {
-  return properties.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const slugs = await client.fetch(allPropertySlugsQuery);
+  return slugs.map((s: { slug: string }) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
@@ -19,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const property = properties.find((p) => p.slug === slug);
+  const property = await client.fetch(propertyBySlugQuery, { slug });
   if (!property) return {};
 
   const price = new Intl.NumberFormat("pt-PT", {
@@ -48,10 +50,11 @@ export default async function PropertyDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const property = properties.find((p) => p.slug === slug);
+  const property = await client.fetch(propertyBySlugQuery, { slug });
   if (!property) notFound();
 
-  const { title, location, price, type, bedrooms, area, image } = property;
+  const { title, location, price, type, bedrooms, area, images, description } = property;
+  const [heroImage, ...extraImages] = images ?? [];
 
   return (
     <>
@@ -66,7 +69,6 @@ export default async function PropertyDetailPage({
           }}
         />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-10">
-          {/* Breadcrumb */}
           <Link
             href="/propriedades"
             className="inline-flex items-center gap-2 text-stone-400 hover:text-gold-400 text-sm font-medium transition-colors duration-200 mb-8"
@@ -98,13 +100,13 @@ export default async function PropertyDetailPage({
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            {/* Image + details */}
+            {/* Images + details */}
             <div className="lg:col-span-2 flex flex-col gap-8">
-              {/* Image */}
+              {/* Hero image */}
               <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
-                {image ? (
+                {heroImage ? (
                   <Image
-                    src={image}
+                    src={heroImage}
                     alt={title}
                     fill
                     className="object-cover"
@@ -121,7 +123,24 @@ export default async function PropertyDetailPage({
                 )}
               </div>
 
-              {/* Property details grid */}
+              {/* Extra images grid */}
+              {extraImages.length > 0 && (
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                  {extraImages.map((src: string, i: number) => (
+                    <div key={i} className="relative aspect-square bg-stone-100 overflow-hidden">
+                      <Image
+                        src={src}
+                        alt={`${title} — fotografia ${i + 2}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 33vw, 16vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Property details */}
               {(bedrooms || area) && (
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-b border-stone-100 py-8">
                   {bedrooms && (
@@ -161,18 +180,15 @@ export default async function PropertyDetailPage({
                 </div>
               )}
 
-              {/* Description placeholder */}
-              <div>
-                <Eyebrow className="mb-4">Descrição</Eyebrow>
-                <div className="flex flex-col gap-3">
-                  <Text muted>
-                    Para mais informações sobre este imóvel, incluindo visitas e
-                    disponibilidade, entre em contacto connosco diretamente. A
-                    nossa equipa está disponível para responder a todas as suas
-                    questões.
+              {/* Description */}
+              {description && (
+                <div>
+                  <Eyebrow className="mb-4">Descrição</Eyebrow>
+                  <Text muted className="whitespace-pre-line">
+                    {description}
                   </Text>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Contact sidebar */}

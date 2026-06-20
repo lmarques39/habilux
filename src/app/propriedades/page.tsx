@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
 import PropertiesClient from "@/components/organisms/PropertiesClient";
+import { type Property } from "@/components/molecules/PropertyCard";
+import { client } from "@/sanity/lib/client";
+import { allPropertiesQuery } from "@/sanity/lib/queries";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Propriedades — Habilux",
@@ -8,7 +13,8 @@ export const metadata: Metadata = {
     "Imóveis disponíveis para compra e arrendamento em Viana do Castelo. Apartamentos, moradias, espaços comerciais e terrenos.",
 };
 
-export default function PropertiesPage() {
+export default async function PropertiesPage() {
+  const properties = await client.fetch<Property[]>(allPropertiesQuery);
   return (
     <>
       {/* Page header — server rendered */}
@@ -33,8 +39,8 @@ export default function PropertiesPage() {
         </div>
       </section>
 
-      {/* Interactive listings — client component */}
-      <PropertiesClient />
+      {/* Interactive listings — client component receives server-fetched data */}
+      <PropertiesClient properties={properties} />
     </>
   );
 }

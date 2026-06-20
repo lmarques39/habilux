@@ -1,11 +1,15 @@
 import type { MetadataRoute } from "next";
-import { properties } from "@/data/properties";
+import { client } from "@/sanity/lib/client";
+import { allPropertySlugsQuery } from "@/sanity/lib/queries";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://habilux.vercel.app";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const propertyEntries: MetadataRoute.Sitemap = properties.map((p) => ({
-    url: `${BASE_URL}/propriedades/${p.slug}`,
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const slugs = await client.fetch(allPropertySlugsQuery);
+  const propertyEntries: MetadataRoute.Sitemap = slugs.map((s: { slug: string }) => ({
+    url: `${BASE_URL}/propriedades/${s.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: 0.7,

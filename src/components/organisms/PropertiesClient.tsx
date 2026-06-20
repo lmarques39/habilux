@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { SlidersHorizontal } from "lucide-react";
-import PropertyCard, { type PropertyType } from "@/components/molecules/PropertyCard";
-import { properties } from "@/data/properties";
+import PropertyCard, { type Property, type PropertyType } from "@/components/molecules/PropertyCard";
 
 const filters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Todos", value: "Todos" },
@@ -13,7 +12,7 @@ const filters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Terreno", value: "Terreno" },
 ];
 
-export default function PropertiesClient() {
+export default function PropertiesClient({ properties }: { properties: Property[] }) {
   const [active, setActive] = useState<PropertyType | "Todos">("Todos");
 
   const filtered =
