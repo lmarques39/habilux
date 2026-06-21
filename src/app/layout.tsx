@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Jost } from "next/font/google";
-import PageLayout from "@/components/templates/PageLayout";
 import "./globals.css";
 
 const inter = Inter({
@@ -34,7 +33,7 @@ export default function RootLayout({
       className={`${inter.variable} ${jost.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-stone-900">
-        <PageLayout>{children}</PageLayout>
+        {children}
       </body>
     </html>
   );
