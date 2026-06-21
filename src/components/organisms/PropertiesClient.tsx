@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
-import PropertyCard, { type Property, type PropertyType } from "@/components/molecules/PropertyCard";
+import PropertyCard, { type Property, type PropertyType, type TransactionType } from "@/components/molecules/PropertyCard";
 
 const typeFilters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Todos", value: "Todos" },
@@ -10,6 +10,12 @@ const typeFilters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Moradia", value: "Moradia" },
   { label: "Comercial", value: "Comercial" },
   { label: "Terreno", value: "Terreno" },
+];
+
+const transactionFilters: { label: string; value: TransactionType | "Todos" }[] = [
+  { label: "Comprar e Arrendar", value: "Todos" },
+  { label: "Venda", value: "venda" },
+  { label: "Arrendamento", value: "arrendamento" },
 ];
 
 const PAGE_SIZE = 24;
@@ -20,6 +26,7 @@ export default function PropertiesClient({ properties }: { properties: Property[
   const searchParams = useSearchParams();
 
   const activeType = (searchParams.get("tipo") as PropertyType | null) ?? "Todos";
+  const activeTransaction = (searchParams.get("negocio") as TransactionType | null) ?? "Todos";
   const page = Math.max(1, parseInt(searchParams.get("pagina") ?? "1"));
 
   function updateParams(updates: Record<string, string | null>) {
@@ -40,9 +47,11 @@ export default function PropertiesClient({ properties }: { properties: Property[
     updateParams({ pagina: n === 1 ? null : String(n) });
   }
 
-  const filtered = activeType === "Todos"
-    ? properties
-    : properties.filter((p) => p.type === activeType);
+  const filtered = properties.filter((p) => {
+    if (activeType !== "Todos" && p.type !== activeType) return false;
+    if (activeTransaction !== "Todos" && p.transaction !== activeTransaction) return false;
+    return true;
+  });
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const currentPage = Math.min(page, Math.max(1, totalPages));
@@ -52,7 +61,25 @@ export default function PropertiesClient({ properties }: { properties: Property[
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Filter bar */}
-        <div className="mb-10">
+        <div className="mb-10 flex flex-col gap-4">
+          {/* Transaction filter */}
+          <div className="flex items-center gap-3 overflow-x-auto pb-1">
+            {transactionFilters.map(({ label, value }) => (
+              <button
+                key={value}
+                onClick={() => setFilter("negocio", value)}
+                className={`shrink-0 px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
+                  activeTransaction === value
+                    ? "bg-navy-900 text-white border-navy-900"
+                    : "bg-white text-stone-600 border-stone-200 hover:border-navy-900 hover:text-navy-900"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Type filter */}
           <div className="flex items-center gap-3 overflow-x-auto pb-1">
             <SlidersHorizontal size={15} className="text-stone-400 shrink-0" />
             {typeFilters.map(({ label, value }) => (
@@ -69,7 +96,8 @@ export default function PropertiesClient({ properties }: { properties: Property[
               </button>
             ))}
           </div>
-          <p className="mt-3 text-sm text-stone-400">
+
+          <p className="text-sm text-stone-400">
             {filtered.length} {filtered.length === 1 ? "imóvel" : "imóveis"}
           </p>
         </div>
@@ -87,7 +115,7 @@ export default function PropertiesClient({ properties }: { properties: Property[
               Nenhum imóvel encontrado.
             </p>
             <button
-              onClick={() => setFilter("tipo", null)}
+              onClick={() => updateParams({ tipo: null, negocio: null, pagina: null })}
               className="text-sm text-blue-500 font-semibold hover:text-blue-600 underline underline-offset-4"
             >
               Ver todos os imóveis

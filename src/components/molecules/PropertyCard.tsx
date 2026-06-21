@@ -5,12 +5,15 @@ import Badge from "@/components/atoms/Badge";
 
 export type PropertyType = "Apartamento" | "Moradia" | "Comercial" | "Terreno";
 
+export type TransactionType = "venda" | "arrendamento";
+
 export interface Property {
   id: string;
   title: string;
   location: string;
   price: number;
   type: PropertyType;
+  transaction?: TransactionType;
   bedrooms?: number;
   area?: number;
   image: string | null;
