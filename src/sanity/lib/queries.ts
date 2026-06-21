@@ -16,7 +16,7 @@ export const allPropertiesQuery = defineQuery(`
 `);
 
 export const featuredPropertiesQuery = defineQuery(`
-  *[_type == "property"][0...3] | order(_createdAt desc) {
+  *[_type == "property" && featured == true] | order(_updatedAt desc) [0...6] {
     "id": _id,
     title,
     "slug": slug.current,

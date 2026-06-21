@@ -77,6 +77,13 @@ export const propertyType = defineType({
       rows: 5,
     }),
     defineField({
+      name: "featured",
+      title: "Destaque",
+      type: "boolean",
+      description: "Mostrar esta propriedade na secção de destaques da página inicial",
+      initialValue: false,
+    }),
+    defineField({
       name: "images",
       title: "Fotografias",
       type: "array",
