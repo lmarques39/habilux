@@ -22,9 +22,10 @@ export function Heading({
   children,
   ...props
 }: HeadingProps) {
+  const isDisplay = Tag === "h1";
   return (
     <Tag
-      className={`font-bold leading-tight tracking-tight ${sizeClasses[size]} ${className}`}
+      className={`${isDisplay ? "font-display font-[200] tracking-wide" : "font-bold tracking-tight"} leading-tight ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}

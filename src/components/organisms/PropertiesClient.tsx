@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { SlidersHorizontal } from "lucide-react";
+import { SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
 import PropertyCard, { type Property, type PropertyType } from "@/components/molecules/PropertyCard";
 
 const typeFilters: { label: string; value: PropertyType | "Todos" }[] = [
@@ -12,56 +12,72 @@ const typeFilters: { label: string; value: PropertyType | "Todos" }[] = [
   { label: "Terreno", value: "Terreno" },
 ];
 
+const PAGE_SIZE = 24;
+
 export default function PropertiesClient({ properties }: { properties: Property[] }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const activeType = (searchParams.get("tipo") as PropertyType | null) ?? "Todos";
+  const page = Math.max(1, parseInt(searchParams.get("pagina") ?? "1"));
 
-  function setFilter(key: string, value: string | null) {
+  function updateParams(updates: Record<string, string | null>) {
     const params = new URLSearchParams(searchParams.toString());
-    if (!value || value === "Todos") {
-      params.delete(key);
-    } else {
-      params.set(key, value);
+    for (const [key, value] of Object.entries(updates)) {
+      if (!value) params.delete(key);
+      else params.set(key, value);
     }
     const qs = params.toString();
-    router.replace(pathname + (qs ? `?${qs}` : ""), { scroll: false });
+    router.replace(pathname + (qs ? `?${qs}` : ""), { scroll: true });
+  }
+
+  function setFilter(key: string, value: string | null) {
+    updateParams({ [key]: value === "Todos" ? null : value, pagina: null });
+  }
+
+  function setPage(n: number) {
+    updateParams({ pagina: n === 1 ? null : String(n) });
   }
 
   const filtered = activeType === "Todos"
     ? properties
     : properties.filter((p) => p.type === activeType);
 
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const currentPage = Math.min(page, Math.max(1, totalPages));
+  const paged = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Filter bar */}
-        <div className="flex flex-wrap items-center gap-3 mb-10">
-          <SlidersHorizontal size={15} className="text-stone-400 shrink-0" />
-          {typeFilters.map(({ label, value }) => (
-            <button
-              key={value}
-              onClick={() => setFilter("tipo", value)}
-              className={`px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
-                activeType === value
-                  ? "bg-blue-500 text-white border-blue-500"
-                  : "bg-white text-stone-600 border-stone-200 hover:border-blue-500 hover:text-blue-500"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-          <span className="ml-auto text-sm text-stone-400">
+        <div className="mb-10">
+          <div className="flex items-center gap-3 overflow-x-auto pb-1">
+            <SlidersHorizontal size={15} className="text-stone-400 shrink-0" />
+            {typeFilters.map(({ label, value }) => (
+              <button
+                key={value}
+                onClick={() => setFilter("tipo", value)}
+                className={`shrink-0 px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
+                  activeType === value
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-stone-600 border-stone-200 hover:border-blue-500 hover:text-blue-500"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-3 text-sm text-stone-400">
             {filtered.length} {filtered.length === 1 ? "imóvel" : "imóveis"}
-          </span>
+          </p>
         </div>
 
         {/* Grid */}
-        {filtered.length > 0 ? (
+        {paged.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((property) => (
+            {paged.map((property) => (
               <PropertyCard key={property.id} property={property} />
             ))}
           </div>
@@ -75,6 +91,31 @@ export default function PropertiesClient({ properties }: { properties: Property[
               className="text-sm text-blue-500 font-semibold hover:text-blue-600 underline underline-offset-4"
             >
               Ver todos os imóveis
+            </button>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-4">
+            <button
+              onClick={() => setPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold border border-stone-200 text-stone-600 hover:border-blue-500 hover:text-blue-500 transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft size={14} />
+              Anterior
+            </button>
+            <span className="text-sm text-stone-500">
+              {currentPage} / {totalPages}
+            </span>
+            <button
+              onClick={() => setPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold border border-stone-200 text-stone-600 hover:border-blue-500 hover:text-blue-500 transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              Seguinte
+              <ChevronRight size={14} />
             </button>
           </div>
         )}

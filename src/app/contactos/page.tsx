@@ -65,11 +65,11 @@ export default function ContactsPage() {
                   Morada
                 </p>
                 <Text className="text-stone-900 font-medium">
-                  Rua do Sol, Lote 211 R/C Dto
+                  Rua do Sol, n.º 210, r/c esquerdo, Amorosa, Chafé
                 </Text>
                 <Text muted>4935-580 Viana do Castelo</Text>
                 <a
-                  href="https://maps.google.com/?q=Rua+do+Sol+211+Viana+do+Castelo"
+                  href="https://maps.google.com/?q=Rua+do+Sol+210+Amorosa+Chaf%C3%A9+Viana+do+Castelo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 text-xs font-semibold text-blue-500 hover:text-blue-600 underline underline-offset-4 transition-colors duration-200"
@@ -100,10 +100,10 @@ export default function ContactsPage() {
                   Email
                 </p>
                 <a
-                  href="mailto:geral@habilux.pt"
+                  href="mailto:antoniorc@sapo.pt"
                   className="text-stone-900 font-medium hover:text-blue-500 transition-colors duration-200"
                 >
-                  geral@habilux.pt
+                  antoniorc@sapo.pt
                 </a>
               </div>
 
@@ -133,7 +133,7 @@ export default function ContactsPage() {
       {/* Map */}
       <div className="h-[400px] ring-1 ring-stone-200">
         <iframe
-          src="https://maps.google.com/maps?q=Viana+do+Castelo+Portugal&z=14&output=embed"
+          src="https://maps.google.com/maps?q=Rua+do+Sol+210+Amorosa+Chafe+Viana+do+Castelo&z=16&output=embed"
           width="100%"
           height="100%"
           style={{ border: 0 }}

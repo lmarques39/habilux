@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Building2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Eyebrow } from "@/components/atoms/Typography";
 import StatBlock from "@/components/molecules/StatBlock";
 
@@ -25,7 +25,7 @@ export default function HeroSection() {
         <div className="max-w-3xl">
           <Eyebrow className="mb-6 text-blue-300">Viana do Castelo · AMI 11192</Eyebrow>
 
-          <h1 className="font-extrabold text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight mb-6">
+          <h1 className="font-display font-[200] text-5xl sm:text-6xl lg:text-[5.5rem] text-white leading-[1.08] tracking-wide mb-6">
             O seu imóvel,{" "}
             <span className="text-blue-400">a nossa</span>{" "}
             dedicação.
@@ -66,9 +66,9 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Decorative building icon */}
-      <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none">
-        <Building2 size={500} strokeWidth={0.5} className="text-white" />
+      {/* Brand mark — architectural background element */}
+      <div className="absolute right-[-8%] bottom-[-10%] w-[60vw] max-w-3xl opacity-[0.07] pointer-events-none select-none">
+        <img src="/logo-mark.svg" alt="" aria-hidden="true" className="w-full h-auto brightness-0 invert" />
       </div>
     </section>
   );

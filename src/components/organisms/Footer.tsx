@@ -61,11 +61,11 @@ export default function Footer() {
               258 338 047
             </a>
             <a
-              href="mailto:geral@habilux.pt"
+              href="mailto:antoniorc@sapo.pt"
               className="flex items-center gap-3 text-sm hover:text-blue-400 transition-colors duration-200"
             >
               <Mail size={14} className="text-blue-400 shrink-0" />
-              geral@habilux.pt
+              antoniorc@sapo.pt
             </a>
             <div className="flex items-start gap-3 text-sm">
               <MapPin size={14} className="text-blue-400 shrink-0 mt-0.5" />
