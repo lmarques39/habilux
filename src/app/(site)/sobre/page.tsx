@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
-import StatBlock from "@/components/molecules/StatBlock";
+import ProofStrip from "@/components/organisms/ProofStrip";
 
 export const metadata: Metadata = {
   title: "Sobre Nós — Habilux",
@@ -44,19 +44,13 @@ export default function AboutPage() {
           <Heading as="h1" size="5xl" className="text-white mb-4 max-w-2xl">
             Mais de 25 anos ao seu serviço
           </Heading>
-          <Text size="lg" className="text-stone-400 max-w-xl">
+          <p className="text-blue-200 text-lg leading-relaxed max-w-xl">
             Uma empresa fundada na confiança, construída na experiência e dedicada
             às pessoas de Viana do Castelo.
-          </Text>
-
-          {/* Stats */}
-          <div className="mt-14 pt-10 border-t border-navy-800 grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-lg">
-            <StatBlock value="25+" label="Anos de experiência" detail="Desde 2000" inverted />
-            <StatBlock value="AMI" label="Licença 11192" detail="Certificada" inverted />
-            <StatBlock value="3" label="Serviços" detail="Especializados" inverted />
-          </div>
+          </p>
         </div>
       </section>
+      <ProofStrip />
 
       {/* Story */}
       <section className="py-24 lg:py-32 bg-white">

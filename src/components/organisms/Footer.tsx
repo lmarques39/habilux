@@ -11,14 +11,14 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-900 text-stone-400">
+    <footer className="bg-navy-900 text-blue-200 border-t border-white/10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1 leading-none">
-              <img src="/logo-white.png" alt="HABILUX" className="h-6 w-auto" />
+              <img src="/logo-white.png" alt="HABILUX" className="w-60 h-auto " />
               <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-blue-400">
                 Investimentos Imobiliários
               </p>
@@ -27,14 +27,14 @@ export default function Footer() {
               Mediação imobiliária com rigor e proximidade em Viana do Castelo.
               Mais de 25 anos ao serviço dos nossos clientes.
             </p>
-            <p className="text-xs text-navy-800 uppercase tracking-widest">
+            <p className="text-xs text-blue-400 uppercase tracking-widest">
               AMI n.º 11192
             </p>
           </div>
 
           {/* Navigation */}
           <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-stone-500 mb-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-300 mb-1">
               Menu
             </p>
             {navLinks.map(({ href, label }) => (
@@ -50,7 +50,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="flex flex-col gap-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-stone-500 mb-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-300 mb-1">
               Contacto
             </p>
             <a
@@ -79,9 +79,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-navy-800 flex flex-col sm:flex-row justify-between gap-3 text-xs text-stone-600">
-          <p>© {new Date().getFullYear()} Habilux — Todos os direitos reservados.</p>
-          <p>Desenvolvido por Luís Marques</p>
+        <div className="mt-12 pt-8 border-t border-navy-800 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-blue-300/60">
+          <div className="flex items-center gap-4">
+            <img src="/logo-white.png" alt="HABILUX" className="h-3.5 w-auto opacity-50" />
+            <p>© {new Date().getFullYear()} Habilux — Todos os direitos reservados.</p>
+          </div>
+          <div className="flex items-center gap-6">
+            <Link href="/privacidade" className="hover:text-blue-300 transition-colors duration-200">
+              Política de Privacidade
+            </Link>
+            <p>Desenvolvido por Luís Marques</p>
+          </div>
         </div>
       </div>
     </footer>

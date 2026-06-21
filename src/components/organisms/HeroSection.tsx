@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Eyebrow } from "@/components/atoms/Typography";
-import StatBlock from "@/components/molecules/StatBlock";
 
 export default function HeroSection() {
   return (
@@ -31,7 +30,7 @@ export default function HeroSection() {
             dedicação.
           </h1>
 
-          <p className="text-stone-400 text-lg sm:text-xl leading-relaxed max-w-xl mb-10">
+          <p className="text-blue-200 text-lg sm:text-xl leading-relaxed max-w-xl mb-10">
             Mais de 25 anos a acompanhar famílias e investidores em Viana do
             Castelo. Mediação imobiliária, promoção bancária e certificados
             energéticos com rigor e proximidade.
@@ -47,23 +46,13 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/contactos"
-              className="inline-flex items-center justify-center gap-2 border border-stone-600 text-stone-300 px-8 py-4 text-sm font-semibold tracking-wide hover:border-blue-400 hover:text-blue-400 transition-colors duration-200"
+              className="inline-flex items-center justify-center gap-2 border border-blue-500/40 text-blue-200 px-8 py-4 text-sm font-semibold tracking-wide hover:border-blue-400 hover:text-blue-400 transition-colors duration-200"
             >
               Fale Connosco
             </Link>
           </div>
         </div>
 
-        {/* Stats row */}
-        <div className="mt-20 pt-10 border-t border-navy-800 grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-xl">
-          {[
-            { value: "25+", label: "Anos de experiência" },
-            { value: "AMI", label: "Licença 11192" },
-            { value: "3", label: "Serviços especializados" },
-          ].map(({ value, label }) => (
-            <StatBlock key={label} value={value} label={label} inverted />
-          ))}
-        </div>
       </div>
 
       {/* Brand mark — architectural background element */}

@@ -77,10 +77,10 @@ export default function ServicesPage() {
           <Heading as="h1" size="5xl" className="text-white mb-4 max-w-2xl">
             Serviços especializados
           </Heading>
-          <Text size="lg" className="text-stone-400 max-w-xl">
+          <p className="text-blue-200 text-lg leading-relaxed max-w-xl">
             Três áreas de atuação para responder a todas as necessidades do
             mercado imobiliário com rigor e proximidade.
-          </Text>
+          </p>
         </div>
       </section>
 
@@ -152,7 +152,7 @@ export default function ServicesPage() {
           </Text>
           <Link
             href="/contactos"
-            className="inline-flex items-center gap-2 bg-stone-900 text-white px-8 py-4 text-sm font-semibold tracking-wide hover:bg-stone-800 transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-blue-500 text-white px-8 py-4 text-sm font-semibold tracking-wide hover:bg-blue-600 transition-colors duration-200"
           >
             Fale connosco
             <ArrowRight size={15} />

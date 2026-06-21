@@ -10,7 +10,7 @@ export default function ProofStrip() {
   return (
     <section className="relative bg-blue-500 py-20 overflow-hidden">
 
-      {/* Grid texture */}
+      {/* Grid texture 
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
@@ -18,7 +18,7 @@ export default function ProofStrip() {
             "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
           backgroundSize: "80px 80px",
         }}
-      />
+      /> */}
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 sm:divide-x sm:divide-white/20">

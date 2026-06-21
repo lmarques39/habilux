@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
+import { Eyebrow, Heading } from "@/components/atoms/Typography";
 import PropertiesClient from "@/components/organisms/PropertiesClient";
 import { type Property } from "@/components/molecules/PropertyCard";
 import { client } from "@/sanity/lib/client";
@@ -19,9 +19,9 @@ export default async function PropertiesPage() {
   return (
     <>
       {/* Page header — server rendered */}
-      <section className="relative bg-stone-900 pt-20 pb-24 overflow-hidden">
+      <section className="relative bg-navy-900 pt-20 pb-24 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -33,10 +33,10 @@ export default async function PropertiesPage() {
           <Heading as="h1" size="5xl" className="text-white mb-4 max-w-2xl">
             Propriedades
           </Heading>
-          <Text size="lg" className="text-stone-400 max-w-xl">
+          <p className="text-blue-200 text-lg leading-relaxed max-w-xl">
             Encontre o imóvel certo em Viana do Castelo e região. Atualizado
             regularmente com as melhores oportunidades do mercado.
-          </Text>
+          </p>
         </div>
       </section>
 

@@ -6,15 +6,12 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/", label: "Início" },
   { href: "/sobre", label: "Sobre Nós" },
   { href: "/servicos", label: "Serviços" },
   { href: "/propriedades", label: "Propriedades" },
-  { href: "/contactos", label: "Contactos" },
 ];
 
 function isActive(href: string, pathname: string) {
-  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
 }
 
@@ -28,36 +25,36 @@ export default function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex flex-col gap-1 leading-none">
-            <img src="/logo-navy.png" alt="HABILUX" className="h-6 w-auto" />
+            <img src="/logo-navy.png" alt="HABILUX" className="h-5 w-auto" />
             <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-blue-500">
               Investimentos Imobiliários
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  isActive(href, pathname)
-                    ? "text-blue-500"
-                    : "text-stone-600 hover:text-blue-500"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <Link
-            href="/contactos"
-            className="hidden md:inline-flex items-center gap-2 border border-stone-900 px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-stone-900 hover:text-white transition-colors duration-200"
-          >
-            Fale Connosco
-          </Link>
+          {/* Desktop nav + CTA */}
+          <div className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-8">
+              {navLinks.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className={`text-sm font-medium transition-colors duration-200 ${
+                    isActive(href, pathname)
+                      ? "text-blue-500"
+                      : "text-stone-600 hover:text-blue-500"
+                  }`}
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+            <Link
+              href="/contactos"
+              className="inline-flex items-center gap-2 border border-stone-900 px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-stone-900 hover:text-white transition-colors duration-200"
+            >
+              Fale Connosco
+            </Link>
+          </div>
 
           {/* Mobile hamburger */}
           <button

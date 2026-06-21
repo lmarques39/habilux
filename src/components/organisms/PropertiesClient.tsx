@@ -61,14 +61,14 @@ export default function PropertiesClient({ properties }: { properties: Property[
     <section className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Filter bar */}
-        <div className="mb-10 flex flex-col gap-4">
+        <div className="mb-10 flex flex-col gap-3">
           {/* Transaction filter */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-1">
+          <div className="flex flex-wrap gap-2">
             {transactionFilters.map(({ label, value }) => (
               <button
                 key={value}
                 onClick={() => setFilter("negocio", value)}
-                className={`shrink-0 px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
                   activeTransaction === value
                     ? "bg-navy-900 text-white border-navy-900"
                     : "bg-white text-stone-600 border-stone-200 hover:border-navy-900 hover:text-navy-900"
@@ -80,13 +80,13 @@ export default function PropertiesClient({ properties }: { properties: Property[
           </div>
 
           {/* Type filter */}
-          <div className="flex items-center gap-3 overflow-x-auto pb-1">
-            <SlidersHorizontal size={15} className="text-stone-400 shrink-0" />
+          <div className="flex flex-wrap items-center gap-2">
+            <SlidersHorizontal size={14} className="text-stone-400" />
             {typeFilters.map(({ label, value }) => (
               <button
                 key={value}
                 onClick={() => setFilter("tipo", value)}
-                className={`shrink-0 px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
                   activeType === value
                     ? "bg-blue-500 text-white border-blue-500"
                     : "bg-white text-stone-600 border-stone-200 hover:border-blue-500 hover:text-blue-500"
