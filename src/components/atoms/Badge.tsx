@@ -1,4 +1,4 @@
-type Variant = "gold" | "dark" | "outline";
+type Variant = "primary" | "dark" | "outline";
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -7,14 +7,14 @@ interface BadgeProps {
 }
 
 const variantClasses: Record<Variant, string> = {
-  gold: "bg-gold-400 text-stone-900",
-  dark: "bg-stone-900 text-gold-300",
-  outline: "border border-gold-400 text-gold-500",
+  primary: "bg-blue-500 text-white",
+  dark: "bg-navy-900 text-blue-300",
+  outline: "border border-blue-500 text-blue-500",
 };
 
 export default function Badge({
   children,
-  variant = "gold",
+  variant = "primary",
   className = "",
 }: BadgeProps) {
   return (

@@ -35,7 +35,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
   return (
     <Link
       href={`/propriedades/${slug}`}
-      className="group flex flex-col bg-white border border-stone-200 hover:border-gold-400 transition-colors duration-300 overflow-hidden"
+      className="group flex flex-col bg-white border border-stone-200 hover:border-blue-500 transition-colors duration-300 overflow-hidden"
     >
       {/* Image */}
       <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
@@ -59,7 +59,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
       {/* Content */}
       <div className="flex flex-col gap-3 p-5">
-        <h3 className="font-serif text-lg font-bold text-stone-900 leading-snug group-hover:text-gold-600 transition-colors duration-200 line-clamp-2">
+        <h3 className="font-bold text-lg text-stone-900 leading-snug group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
           {title}
         </h3>
 
@@ -87,7 +87,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
         )}
 
         {/* Price */}
-        <p className="font-serif text-2xl font-bold text-gold-500 mt-1">
+        <p className="font-bold text-2xl text-blue-500 mt-1">
           {formatPrice(price)}
         </p>
       </div>

@@ -51,13 +51,13 @@ export default function ServicesSection() {
           {services.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="group flex flex-col gap-5 bg-white p-8 border border-stone-200 hover:border-gold-400 transition-colors duration-300"
+              className="group flex flex-col gap-5 bg-white p-8 border border-stone-200 hover:border-blue-500 transition-colors duration-300"
             >
-              <div className="w-12 h-12 flex items-center justify-center border border-gold-300 text-gold-500 group-hover:bg-gold-400 group-hover:text-stone-900 group-hover:border-gold-400 transition-colors duration-300">
+              <div className="w-12 h-12 flex items-center justify-center border border-blue-400 text-blue-500 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-colors duration-300">
                 <Icon size={22} strokeWidth={1.5} />
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className="font-serif text-xl font-bold text-stone-900">
+                <h3 className="font-bold text-xl text-stone-900">
                   {title}
                 </h3>
                 <Text muted size="sm">
@@ -67,7 +67,7 @@ export default function ServicesSection() {
               <div className="mt-auto pt-4 border-t border-stone-100">
                 <Link
                   href="/servicos"
-                  className="text-xs font-semibold uppercase tracking-widest text-gold-500 group-hover:text-gold-600 transition-colors duration-200"
+                  className="text-xs font-semibold uppercase tracking-widest text-blue-500 group-hover:text-blue-600 transition-colors duration-200"
                 >
                   Saber mais →
                 </Link>

@@ -46,8 +46,8 @@ export default function PropertiesClient({ properties }: { properties: Property[
               onClick={() => setFilter("tipo", value)}
               className={`px-4 py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
                 activeType === value
-                  ? "bg-stone-900 text-white border-stone-900"
-                  : "bg-white text-stone-600 border-stone-200 hover:border-stone-900 hover:text-stone-900"
+                  ? "bg-blue-500 text-white border-blue-500"
+                  : "bg-white text-stone-600 border-stone-200 hover:border-blue-500 hover:text-blue-500"
               }`}
             >
               {label}
@@ -72,7 +72,7 @@ export default function PropertiesClient({ properties }: { properties: Property[
             </p>
             <button
               onClick={() => setFilter("tipo", null)}
-              className="text-sm text-gold-500 font-semibold hover:text-gold-600 underline underline-offset-4"
+              className="text-sm text-blue-500 font-semibold hover:text-blue-600 underline underline-offset-4"
             >
               Ver todos os imóveis
             </button>

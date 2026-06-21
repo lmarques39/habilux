@@ -8,11 +8,11 @@ const stats = [
 
 export default function ProofStrip() {
   return (
-    <section className="relative bg-stone-900 py-20 overflow-hidden">
+    <section className="relative bg-blue-500 py-20 overflow-hidden">
 
       {/* Grid texture */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -20,12 +20,8 @@ export default function ProofStrip() {
         }}
       />
 
-      {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
-
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 sm:divide-x sm:divide-stone-800">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 sm:divide-x sm:divide-white/20">
           {stats.map(({ value, label, detail }) => (
             <StatBlock
               key={label}

@@ -24,7 +24,7 @@ export function Heading({
 }: HeadingProps) {
   return (
     <Tag
-      className={`font-serif font-bold leading-tight tracking-tight ${sizeClasses[size]} ${className}`}
+      className={`font-bold leading-tight tracking-tight ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {children}
@@ -62,7 +62,7 @@ interface EyebrowProps {
 export function Eyebrow({ children, className = "" }: EyebrowProps) {
   return (
     <p
-      className={`text-xs font-semibold uppercase tracking-[0.2em] text-gold-500 ${className}`}
+      className={`text-xs font-semibold uppercase tracking-[0.2em] text-blue-500 ${className}`}
     >
       {children}
     </p>

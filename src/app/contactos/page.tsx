@@ -19,9 +19,9 @@ export default function ContactsPage() {
   return (
     <>
       {/* Page header */}
-      <section className="relative bg-stone-900 pt-20 pb-24 overflow-hidden">
+      <section className="relative bg-navy-900 pt-20 pb-24 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -35,7 +35,7 @@ export default function ContactsPage() {
           </Heading>
           <a
             href="tel:+351258338047"
-            className="text-4xl sm:text-5xl font-serif font-bold text-gold-400 hover:text-gold-300 transition-colors duration-200 block mt-2"
+            className="text-4xl sm:text-5xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-200 block mt-2"
           >
             258 338 047
           </a>
@@ -60,7 +60,7 @@ export default function ContactsPage() {
             <div className="lg:col-span-2 flex flex-col gap-10">
 
               <div>
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-blue-500 mb-3">
                   <MapPin size={13} />
                   Morada
                 </p>
@@ -72,20 +72,20 @@ export default function ContactsPage() {
                   href="https://maps.google.com/?q=Rua+do+Sol+211+Viana+do+Castelo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block mt-2 text-xs font-semibold text-gold-500 hover:text-gold-600 underline underline-offset-4 transition-colors duration-200"
+                  className="inline-block mt-2 text-xs font-semibold text-blue-500 hover:text-blue-600 underline underline-offset-4 transition-colors duration-200"
                 >
                   Ver no mapa →
                 </a>
               </div>
 
               <div>
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-blue-500 mb-3">
                   <Phone size={13} />
                   Telefone
                 </p>
                 <a
                   href="tel:+351258338047"
-                  className="flex items-center gap-3 text-stone-900 font-bold text-xl hover:text-gold-500 transition-colors duration-200"
+                  className="flex items-center gap-3 text-stone-900 font-bold text-xl hover:text-blue-500 transition-colors duration-200"
                 >
                   258 338 047
                   <span className="text-xs font-normal bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full uppercase tracking-wide">
@@ -95,20 +95,20 @@ export default function ContactsPage() {
               </div>
 
               <div>
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-blue-500 mb-3">
                   <Mail size={13} />
                   Email
                 </p>
                 <a
                   href="mailto:geral@habilux.pt"
-                  className="text-stone-900 font-medium hover:text-gold-500 transition-colors duration-200"
+                  className="text-stone-900 font-medium hover:text-blue-500 transition-colors duration-200"
                 >
                   geral@habilux.pt
                 </a>
               </div>
 
               <div>
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-gold-500 mb-3">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-blue-500 mb-3">
                   <Clock size={13} />
                   Horário
                 </p>

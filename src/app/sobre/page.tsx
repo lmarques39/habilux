@@ -30,9 +30,9 @@ export default function AboutPage() {
   return (
     <>
       {/* Page header */}
-      <section className="relative bg-stone-900 pt-20 pb-24 overflow-hidden">
+      <section className="relative bg-navy-900 pt-20 pb-24 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -50,7 +50,7 @@ export default function AboutPage() {
           </Text>
 
           {/* Stats */}
-          <div className="mt-14 pt-10 border-t border-stone-800 grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-lg">
+          <div className="mt-14 pt-10 border-t border-navy-800 grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-lg">
             <StatBlock value="25+" label="Anos de experiência" detail="Desde 2000" inverted />
             <StatBlock value="AMI" label="Licença 11192" detail="Certificada" inverted />
             <StatBlock value="3" label="Serviços" detail="Especializados" inverted />
@@ -91,9 +91,9 @@ export default function AboutPage() {
             <div className="flex flex-col gap-8">
               {values.map(({ title, description }) => (
                 <div key={title} className="flex gap-5">
-                  <div className="w-px bg-gold-400 shrink-0 mt-1" />
+                  <div className="w-px bg-blue-500 shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-serif text-xl font-bold text-stone-900 mb-2">
+                    <h3 className="font-bold text-xl text-stone-900 mb-2">
                       {title}
                     </h3>
                     <Text muted size="sm">
@@ -108,9 +108,9 @@ export default function AboutPage() {
       </section>
 
       {/* Mission strip */}
-      <section className="bg-stone-900 py-20 relative overflow-hidden">
+      <section className="bg-navy-900 py-20 relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -118,10 +118,10 @@ export default function AboutPage() {
           }}
         />
         <div className="relative mx-auto max-w-3xl px-6 lg:px-8 text-center">
-          <p className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white italic leading-snug">
+          <p className="font-bold text-2xl sm:text-3xl lg:text-4xl text-white italic leading-snug">
             &ldquo;O nosso sucesso mede-se pela satisfação de quem confia em nós.&rdquo;
           </p>
-          <p className="mt-6 text-gold-400 text-sm font-semibold uppercase tracking-widest">
+          <p className="mt-6 text-blue-400 text-sm font-semibold uppercase tracking-widest">
             António Jorge Carvalho Rocha · Fundador
           </p>
         </div>

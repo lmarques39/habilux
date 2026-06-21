@@ -14,7 +14,7 @@ const subjects = [
 ];
 
 const inputClass =
-  "w-full border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-gold-400 focus:outline-none transition-colors duration-200";
+  "w-full border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-blue-500 focus:outline-none transition-colors duration-200";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -60,8 +60,8 @@ export default function ContactForm() {
   if (status === "success") {
     return (
       <div className="flex flex-col items-start gap-4 py-12">
-        <CheckCircle size={40} className="text-gold-400" strokeWidth={1.5} />
-        <h2 className="font-serif text-2xl font-bold text-stone-900">
+        <CheckCircle size={40} className="text-blue-500" strokeWidth={1.5} />
+        <h2 className="font-bold text-2xl text-stone-900">
           Mensagem enviada
         </h2>
         <p className="text-stone-500 text-base leading-relaxed max-w-md">
@@ -70,7 +70,7 @@ export default function ContactForm() {
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-2 text-sm font-semibold text-gold-500 hover:text-gold-600 underline underline-offset-4 transition-colors duration-200"
+          className="mt-2 text-sm font-semibold text-blue-500 hover:text-blue-600 underline underline-offset-4 transition-colors duration-200"
         >
           Enviar outra mensagem
         </button>
@@ -93,7 +93,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">
-            Nome <span className="text-gold-500">*</span>
+            Nome <span className="text-blue-500">*</span>
           </label>
           <input
             id="name"
@@ -108,7 +108,7 @@ export default function ContactForm() {
 
         <div className="flex flex-col gap-1.5">
           <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">
-            Email <span className="text-gold-500">*</span>
+            Email <span className="text-blue-500">*</span>
           </label>
           <input
             id="email"
@@ -153,7 +153,7 @@ export default function ContactForm() {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">
-          Mensagem <span className="text-gold-500">*</span>
+          Mensagem <span className="text-blue-500">*</span>
         </label>
         <textarea
           id="message"
@@ -175,7 +175,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="flex items-center justify-center gap-2.5 bg-stone-900 hover:bg-stone-800 disabled:opacity-60 text-white font-semibold text-sm px-8 py-4 transition-colors duration-200 self-start"
+        className="flex items-center justify-center gap-2.5 bg-blue-500 hover:bg-blue-600 disabled:opacity-60 text-white font-semibold text-sm px-8 py-4 transition-colors duration-200 self-start"
       >
         {status === "loading" ? (
           <>

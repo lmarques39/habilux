@@ -2,7 +2,7 @@ interface StatBlockProps {
   value: string;
   label: string;
   detail?: string;
-  inverted?: boolean; // true = dark bg (gold value, white label), false = light bg (gold value, dark label)
+  inverted?: boolean;
   className?: string;
 }
 
@@ -15,7 +15,7 @@ export default function StatBlock({
 }: StatBlockProps) {
   return (
     <div className={`flex flex-col gap-1 ${className}`}>
-      <span className="font-serif text-4xl font-bold text-gold-400 leading-none">
+      <span className={`font-bold text-4xl leading-none ${inverted ? "text-white" : "text-blue-500"}`}>
         {value}
       </span>
       <span
@@ -26,7 +26,7 @@ export default function StatBlock({
         {label}
       </span>
       {detail && (
-        <span className={`text-xs ${inverted ? "text-stone-500" : "text-stone-400"}`}>
+        <span className={`text-xs ${inverted ? "text-blue-200" : "text-stone-400"}`}>
           {detail}
         </span>
       )}

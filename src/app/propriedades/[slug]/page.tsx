@@ -59,9 +59,9 @@ export default async function PropertyDetailPage({
   return (
     <>
       {/* Page header */}
-      <section className="relative bg-stone-900 pt-20 pb-20 overflow-hidden">
+      <section className="relative bg-navy-900 pt-20 pb-20 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -71,14 +71,14 @@ export default async function PropertyDetailPage({
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 pt-10">
           <Link
             href="/propriedades"
-            className="inline-flex items-center gap-2 text-stone-400 hover:text-gold-400 text-sm font-medium transition-colors duration-200 mb-8"
+            className="inline-flex items-center gap-2 text-stone-400 hover:text-blue-400 text-sm font-medium transition-colors duration-200 mb-8"
           >
             <ArrowLeft size={14} />
             Voltar às propriedades
           </Link>
 
           <div className="flex flex-wrap items-start gap-4 mb-4">
-            <Badge variant="gold">{type}</Badge>
+            <Badge variant="primary">{type}</Badge>
           </div>
 
           <Heading as="h1" size="4xl" className="text-white mb-4 max-w-3xl">
@@ -86,11 +86,11 @@ export default async function PropertyDetailPage({
           </Heading>
 
           <div className="flex items-center gap-1.5 text-stone-400 text-base mb-6">
-            <MapPin size={15} className="shrink-0 text-gold-400" />
+            <MapPin size={15} className="shrink-0 text-blue-400" />
             <span>{location}</span>
           </div>
 
-          <p className="font-serif text-3xl sm:text-4xl font-bold text-gold-400">
+          <p className="font-bold text-3xl sm:text-4xl text-blue-400">
             {formatPrice(price)}
           </p>
         </div>
@@ -151,7 +151,7 @@ export default async function PropertyDetailPage({
                           Quartos
                         </span>
                       </div>
-                      <span className="font-serif text-2xl font-bold text-stone-900">
+                      <span className="text-2xl font-bold text-stone-900">
                         {bedrooms}
                       </span>
                     </div>
@@ -164,7 +164,7 @@ export default async function PropertyDetailPage({
                           Área
                         </span>
                       </div>
-                      <span className="font-serif text-2xl font-bold text-stone-900">
+                      <span className="text-2xl font-bold text-stone-900">
                         {area} m²
                       </span>
                     </div>
@@ -173,7 +173,7 @@ export default async function PropertyDetailPage({
                     <span className="text-xs font-semibold uppercase tracking-widest text-stone-400">
                       Tipo
                     </span>
-                    <span className="font-serif text-2xl font-bold text-stone-900">
+                    <span className="text-2xl font-bold text-stone-900">
                       {type}
                     </span>
                   </div>
@@ -204,7 +204,7 @@ export default async function PropertyDetailPage({
 
                 <a
                   href="tel:+351258338047"
-                  className="flex items-center gap-3 bg-gold-400 hover:bg-gold-500 text-stone-900 font-semibold px-6 py-4 transition-colors duration-200 mb-4 w-full"
+                  className="flex items-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-4 transition-colors duration-200 mb-4 w-full"
                 >
                   <Phone size={18} />
                   258 338 047

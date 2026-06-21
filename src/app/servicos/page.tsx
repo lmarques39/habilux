@@ -63,9 +63,9 @@ export default function ServicesPage() {
   return (
     <>
       {/* Page header */}
-      <section className="relative bg-stone-900 pt-20 pb-24 overflow-hidden">
+      <section className="relative bg-navy-900 pt-20 pb-24 overflow-hidden">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
@@ -97,7 +97,7 @@ export default function ServicesPage() {
               {/* Text */}
               <div>
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 flex items-center justify-center border border-gold-300 text-gold-500">
+                  <div className="w-12 h-12 flex items-center justify-center border border-blue-400 text-blue-500">
                     <Icon size={22} strokeWidth={1.5} />
                   </div>
                   <Heading as="h2" size="2xl" className="text-stone-900">
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                 </Text>
                 <Link
                   href="/contactos"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-gold-500 hover:text-gold-600 transition-colors duration-200"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-500 hover:text-blue-600 transition-colors duration-200"
                 >
                   Pedir informações
                   <ArrowRight size={15} />
@@ -126,7 +126,7 @@ export default function ServicesPage() {
                     <li key={point} className="flex items-start gap-3">
                       <CheckCircle2
                         size={17}
-                        className="text-gold-500 shrink-0 mt-0.5"
+                        className="text-blue-500 shrink-0 mt-0.5"
                         strokeWidth={1.5}
                       />
                       <Text size="sm" muted>

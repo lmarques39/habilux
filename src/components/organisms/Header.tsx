@@ -28,10 +28,10 @@ export default function Header() {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex flex-col leading-none">
-            <span className="font-serif text-2xl font-bold tracking-tight text-stone-900">
+            <span className="font-extrabold text-2xl tracking-tight text-navy-900">
               HABILUX
             </span>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-500">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-500">
               Investimentos Imobiliários
             </span>
           </Link>
@@ -44,8 +44,8 @@ export default function Header() {
                 href={href}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(href, pathname)
-                    ? "text-gold-500"
-                    : "text-stone-600 hover:text-gold-500"
+                    ? "text-blue-500"
+                    : "text-stone-600 hover:text-blue-500"
                 }`}
               >
                 {label}
@@ -83,8 +83,8 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className={`text-base font-medium transition-colors duration-200 ${
                   isActive(href, pathname)
-                    ? "text-gold-500"
-                    : "text-stone-700 hover:text-gold-500"
+                    ? "text-blue-500"
+                    : "text-stone-700 hover:text-blue-500"
                 }`}
               >
                 {label}

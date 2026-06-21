@@ -2,14 +2,17 @@
 
 @theme inline {
   /* Fonts */
-  --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
 
-  /* Brand colors */
-  --color-gold-300: #e8c97a;
-  --color-gold-400: #d4a843;
-  --color-gold-500: #b8891e;
-  --color-gold-600: #9a6f10;
+  /* Brand blue palette */
+  --color-blue-300: #93b4f0;
+  --color-blue-400: #7ba7e8;
+  --color-blue-500: #3b68c8;
+  --color-blue-600: #2d54a8;
+
+  /* Dark section backgrounds */
+  --color-navy-800: #243f7a;
+  --color-navy-900: #1e3a6e;
 
   --color-stone-50:  #fafaf9;
   --color-stone-100: #f5f5f4;
@@ -27,5 +30,5 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: var(--font-serif), serif;
+  font-family: var(--font-sans), sans-serif;
 }

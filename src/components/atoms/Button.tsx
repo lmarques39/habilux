@@ -10,11 +10,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-gold-400 text-stone-900 hover:bg-gold-500 border border-gold-400 hover:border-gold-500",
+    "bg-blue-500 text-white hover:bg-blue-600 border border-blue-500 hover:border-blue-600",
   secondary:
     "bg-transparent text-stone-900 border border-stone-900 hover:bg-stone-900 hover:text-white",
   ghost:
-    "bg-transparent text-gold-400 border border-gold-400 hover:bg-gold-400 hover:text-stone-900",
+    "bg-transparent text-blue-400 border border-blue-400 hover:bg-blue-500 hover:text-white",
 };
 
 const sizeClasses: Record<Size, string> = {

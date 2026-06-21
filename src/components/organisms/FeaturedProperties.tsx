@@ -21,7 +21,7 @@ export default async function FeaturedProperties() {
           </div>
           <Link
             href="/propriedades"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gold-500 hover:text-gold-600 transition-colors duration-200 shrink-0"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-500 hover:text-blue-600 transition-colors duration-200 shrink-0"
           >
             Ver todas as propriedades
             <ArrowRight size={15} />
