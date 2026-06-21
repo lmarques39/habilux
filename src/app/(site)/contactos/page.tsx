@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 const schedule = [
-  { day: "Segunda — Sexta", hours: "09:00 — 18:00" },
-  { day: "Sábado", hours: "09:00 — 13:00" },
+  { day: "Segunda — Sexta", hours: "10:00 — 18:00" },
+  { day: "Sábado", hours: "10:00 — 13:00" },
   { day: "Domingo", hours: "Encerrado" },
 ];
 
