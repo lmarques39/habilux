@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { SlidersHorizontal, ChevronLeft, ChevronRight } from "lucide-react";
+import { SlidersHorizontal, ChevronLeft, ChevronRight, ArrowUpDown } from "lucide-react";
 import PropertyCard, { type Property, type PropertyType, type TransactionType } from "@/components/molecules/PropertyCard";
 
 const typeFilters: { label: string; value: PropertyType | "Todos" }[] = [
@@ -18,6 +18,12 @@ const transactionFilters: { label: string; value: TransactionType | "Todos" }[] 
   { label: "Arrendamento", value: "arrendamento" },
 ];
 
+const sortOptions = [
+  { label: "Mais recentes", value: "recentes" },
+  { label: "Menor preço", value: "preco-asc" },
+  { label: "Maior preço", value: "preco-desc" },
+];
+
 const PAGE_SIZE = 24;
 
 export default function PropertiesClient({ properties }: { properties: Property[] }) {
@@ -27,6 +33,7 @@ export default function PropertiesClient({ properties }: { properties: Property[
 
   const activeType = (searchParams.get("tipo") as PropertyType | null) ?? "Todos";
   const activeTransaction = (searchParams.get("negocio") as TransactionType | null) ?? "Todos";
+  const activeSort = searchParams.get("ordem") ?? "recentes";
   const page = Math.max(1, parseInt(searchParams.get("pagina") ?? "1"));
 
   function updateParams(updates: Record<string, string | null>) {
@@ -47,11 +54,17 @@ export default function PropertiesClient({ properties }: { properties: Property[
     updateParams({ pagina: n === 1 ? null : String(n) });
   }
 
-  const filtered = properties.filter((p) => {
-    if (activeType !== "Todos" && p.type !== activeType) return false;
-    if (activeTransaction !== "Todos" && p.transaction !== activeTransaction) return false;
-    return true;
-  });
+  const filtered = properties
+    .filter((p) => {
+      if (activeType !== "Todos" && p.type !== activeType) return false;
+      if (activeTransaction !== "Todos" && p.transaction !== activeTransaction) return false;
+      return true;
+    })
+    .sort((a, b) => {
+      if (activeSort === "preco-asc") return (a.price ?? 0) - (b.price ?? 0);
+      if (activeSort === "preco-desc") return (b.price ?? 0) - (a.price ?? 0);
+      return 0;
+    });
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const currentPage = Math.min(page, Math.max(1, totalPages));
@@ -97,6 +110,24 @@ export default function PropertiesClient({ properties }: { properties: Property[
             ))}
           </div>
 
+          {/* Sort */}
+          <div className="flex flex-wrap items-center gap-2">
+            <ArrowUpDown size={14} className="text-stone-400" />
+            {sortOptions.map(({ label, value }) => (
+              <button
+                key={value}
+                onClick={() => updateParams({ ordem: value === "recentes" ? null : value, pagina: null })}
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs font-semibold uppercase tracking-widest border transition-colors duration-200 cursor-pointer ${
+                  activeSort === value
+                    ? "bg-stone-900 text-white border-stone-900"
+                    : "bg-white text-stone-600 border-stone-200 hover:border-stone-900 hover:text-stone-900"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
           <p className="text-sm text-stone-400">
             {filtered.length} {filtered.length === 1 ? "imóvel" : "imóveis"}
           </p>
@@ -115,7 +146,7 @@ export default function PropertiesClient({ properties }: { properties: Property[
               Nenhum imóvel encontrado.
             </p>
             <button
-              onClick={() => updateParams({ tipo: null, negocio: null, pagina: null })}
+              onClick={() => updateParams({ tipo: null, negocio: null, ordem: null, pagina: null })}
               className="text-sm text-blue-500 font-semibold hover:text-blue-600 underline underline-offset-4"
             >
               Ver todos os imóveis
