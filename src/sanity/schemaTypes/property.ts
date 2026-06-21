@@ -47,10 +47,22 @@ export const propertyType = defineType({
       initialValue: "venda",
     }),
     defineField({
+      name: "priceOnRequest",
+      title: "Preço sob consulta",
+      type: "boolean",
+      description: "Ativar para mostrar 'Preço sob consulta' em vez do valor",
+      initialValue: false,
+    }),
+    defineField({
       name: "price",
       title: "Preço (€)",
       type: "number",
-      validation: (rule) => rule.required().positive(),
+      hidden: ({ document }) => !!document?.priceOnRequest,
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          if (!context.document?.priceOnRequest && !value) return "Obrigatório quando o preço não está sob consulta";
+          return true;
+        }),
     }),
     defineField({
       name: "location",

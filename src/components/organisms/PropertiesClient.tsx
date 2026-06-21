@@ -61,8 +61,14 @@ export default function PropertiesClient({ properties }: { properties: Property[
       return true;
     })
     .sort((a, b) => {
-      if (activeSort === "preco-asc") return (a.price ?? 0) - (b.price ?? 0);
-      if (activeSort === "preco-desc") return (b.price ?? 0) - (a.price ?? 0);
+      if (activeSort === "preco-asc" || activeSort === "preco-desc") {
+        const aVal = a.priceOnRequest ? null : (a.price ?? null);
+        const bVal = b.priceOnRequest ? null : (b.price ?? null);
+        if (aVal === null && bVal === null) return 0;
+        if (aVal === null) return 1;
+        if (bVal === null) return -1;
+        return activeSort === "preco-asc" ? aVal - bVal : bVal - aVal;
+      }
       return 0;
     });
 

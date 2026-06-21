@@ -24,15 +24,13 @@ export async function generateMetadata({
   const property = await client.fetch(propertyBySlugQuery, { slug });
   if (!property) return {};
 
-  const price = new Intl.NumberFormat("pt-PT", {
-    style: "currency",
-    currency: "EUR",
-    maximumFractionDigits: 0,
-  }).format(property.price);
+  const priceText = property.priceOnRequest
+    ? "Preço sob consulta"
+    : new Intl.NumberFormat("pt-PT", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(property.price ?? 0);
 
   return {
     title: `${property.title} — Habilux`,
-    description: `${property.type} em ${property.location}. ${price}. Habilux — Investimentos Imobiliários, Viana do Castelo.`,
+    description: `${property.type} em ${property.location}. ${priceText}. Habilux — Investimentos Imobiliários, Viana do Castelo.`,
   };
 }
 
@@ -53,7 +51,7 @@ export default async function PropertyDetailPage({
   const property = await client.fetch(propertyBySlugQuery, { slug });
   if (!property) notFound();
 
-  const { title, location, price, type, bedrooms, area, images, description } = property;
+  const { title, location, price, priceOnRequest, type, bedrooms, area, images, description } = property;
   const [heroImage, ...extraImages] = images ?? [];
 
   return (
@@ -91,7 +89,7 @@ export default async function PropertyDetailPage({
           </div>
 
           <p className="font-bold text-3xl sm:text-4xl text-blue-400">
-            {formatPrice(price)}
+            {priceOnRequest ? "Preço sob consulta" : price ? formatPrice(price) : null}
           </p>
         </div>
       </section>

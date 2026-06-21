@@ -11,7 +11,8 @@ export interface Property {
   id: string;
   title: string;
   location: string;
-  price: number;
+  price?: number | null;
+  priceOnRequest?: boolean | null;
   type: PropertyType;
   transaction?: TransactionType;
   bedrooms?: number;
@@ -33,7 +34,7 @@ function formatPrice(price: number): string {
 }
 
 export default function PropertyCard({ property }: PropertyCardProps) {
-  const { title, location, price, type, bedrooms, area, image, slug } = property;
+  const { title, location, price, priceOnRequest, type, bedrooms, area, image, slug } = property;
 
   return (
     <Link
@@ -91,7 +92,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
         {/* Price */}
         <p className="font-bold text-2xl text-blue-500 mt-1">
-          {formatPrice(price)}
+          {priceOnRequest ? "Preço sob consulta" : price ? formatPrice(price) : "—"}
         </p>
       </div>
     </Link>
