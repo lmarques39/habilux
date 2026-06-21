@@ -99,7 +99,7 @@ export default async function PropertyDetailPage({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Images + details */}
-            <div className="lg:col-span-2 flex flex-col gap-8 order-2 lg:order-1">
+            <div className="lg:col-span-2 flex flex-col gap-8">
               {/* Hero image */}
               <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
                 {heroImage ? (
@@ -190,7 +190,7 @@ export default async function PropertyDetailPage({
             </div>
 
             {/* Contact sidebar */}
-            <div className="lg:col-span-1 order-1 lg:order-2">
+            <div className="lg:col-span-1">
               <div className="bg-stone-50 p-8 sticky top-28">
                 <Eyebrow className="mb-4">Interessado?</Eyebrow>
                 <Heading as="h2" size="xl" className="text-stone-900 mb-2">
