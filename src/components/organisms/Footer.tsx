@@ -17,11 +17,9 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <div className="leading-none">
-              <p className="font-extrabold text-2xl text-white tracking-tight">
-                HABILUX
-              </p>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-400 mt-1">
+            <div className="flex flex-col gap-1 leading-none">
+              <img src="/logo-white.png" alt="HABILUX" className="h-6 w-auto" />
+              <p className="text-[9px] font-semibold uppercase tracking-[0.22em] text-blue-400">
                 Investimentos Imobiliários
               </p>
             </div>

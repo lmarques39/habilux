@@ -27,11 +27,9 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="font-extrabold text-2xl tracking-tight text-navy-900">
-              HABILUX
-            </span>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-500">
+          <Link href="/" className="flex flex-col gap-1 leading-none">
+            <img src="/logo-navy.png" alt="HABILUX" className="h-6 w-auto" />
+            <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-blue-500">
               Investimentos Imobiliários
             </span>
           </Link>
