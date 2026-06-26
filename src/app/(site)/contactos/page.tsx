@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
 import ContactForm from "@/components/organisms/ContactForm";
@@ -53,7 +54,9 @@ export default function ContactsPage() {
               <Heading as="h2" size="2xl" className="text-stone-900 mb-8">
                 Envie-nos uma mensagem
               </Heading>
-              <ContactForm />
+              <Suspense fallback={<div className="h-64 bg-stone-50 animate-pulse" />}>
+                <ContactForm />
+              </Suspense>
             </div>
 
             {/* Contact info */}

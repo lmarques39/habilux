@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle, AlertCircle, Loader } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Send, CheckCircle, AlertCircle, Loader, Home } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -19,6 +20,8 @@ const inputClass =
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const searchParams = useSearchParams();
+  const imovel = searchParams.get("imovel") ?? "";
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -80,6 +83,14 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+      {/* Property context chip */}
+      {imovel && (
+        <div className="flex items-center gap-2.5 bg-blue-50 border border-blue-100 px-4 py-3 text-sm text-blue-700">
+          <Home size={14} className="shrink-0" />
+          <span>Sobre o imóvel: <strong>{imovel}</strong></span>
+        </div>
+      )}
+
       {/* Honeypot — hidden from real users */}
       <input
         type="text"
@@ -141,7 +152,12 @@ export default function ContactForm() {
           <label htmlFor="subject" className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-500">
             Assunto
           </label>
-          <select id="subject" name="subject" className={inputClass}>
+          <select
+            id="subject"
+            name="subject"
+            className={inputClass}
+            defaultValue={imovel ? "Informação sobre imóvel" : subjects[0]}
+          >
             {subjects.map((s) => (
               <option key={s} value={s}>
                 {s}
@@ -162,6 +178,7 @@ export default function ContactForm() {
           rows={5}
           placeholder="Escreva a sua mensagem..."
           className={`${inputClass} resize-none`}
+          defaultValue={imovel ? `Olá, tenho interesse no imóvel "${imovel}". Gostaria de receber mais informações.` : ""}
         />
       </div>
 

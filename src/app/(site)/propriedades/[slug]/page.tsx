@@ -106,7 +106,7 @@ export default async function PropertyDetailPage({
           Ligar
         </a>
         <Link
-          href="/contactos"
+          href={`/contactos?imovel=${encodeURIComponent(title)}`}
           className="flex-1 flex items-center justify-center border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-semibold text-sm py-3.5 transition-colors duration-200"
         >
           Mensagem
@@ -192,7 +192,7 @@ export default async function PropertyDetailPage({
                 </a>
 
                 <Link
-                  href="/contactos"
+                  href={`/contactos?imovel=${encodeURIComponent(title)}`}
                   className="flex items-center justify-center border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-semibold px-6 py-4 transition-colors duration-200 w-full text-sm"
                 >
                   Enviar mensagem
