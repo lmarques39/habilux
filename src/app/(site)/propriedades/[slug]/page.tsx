@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MapPin, BedDouble, Square, Phone, ArrowLeft } from "lucide-react";
 import { Eyebrow, Heading, Text } from "@/components/atoms/Typography";
 import Badge from "@/components/atoms/Badge";
+import PropertyGallery from "@/components/organisms/PropertyGallery";
 import { client } from "@/sanity/lib/client";
 import { propertyBySlugQuery, allPropertySlugsQuery } from "@/sanity/lib/queries";
 
@@ -52,7 +52,6 @@ export default async function PropertyDetailPage({
   if (!property) notFound();
 
   const { title, location, price, priceOnRequest, type, bedrooms, area, images, description } = property;
-  const [heroImage, ...extraImages] = images ?? [];
 
   return (
     <>
@@ -100,43 +99,7 @@ export default async function PropertyDetailPage({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Images + details */}
             <div className="lg:col-span-2 flex flex-col gap-8">
-              {/* Hero image */}
-              <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
-                {heroImage ? (
-                  <Image
-                    src={heroImage}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    priority
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-stone-100">
-                    <Square size={48} className="text-stone-300" strokeWidth={1} />
-                    <span className="text-stone-400 text-sm">
-                      Imagens disponíveis brevemente
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Extra images grid */}
-              {extraImages.length > 0 && (
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
-                  {extraImages.map((src: string, i: number) => (
-                    <div key={i} className="relative aspect-square bg-stone-100 overflow-hidden">
-                      <Image
-                        src={src}
-                        alt={`${title} — fotografia ${i + 2}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 33vw, 16vw"
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
+              <PropertyGallery images={images ?? []} title={title} />
 
               {/* Property details */}
               {(bedrooms || area) && (
