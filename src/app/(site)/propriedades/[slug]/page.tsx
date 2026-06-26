@@ -93,8 +93,28 @@ export default async function PropertyDetailPage({
         </div>
       </section>
 
+      {/* Mobile sticky CTA — hidden on desktop where sidebar handles this */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t border-stone-200 px-4 py-3 flex gap-3"
+        style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
+      >
+        <a
+          href="tel:+351258338047"
+          className="flex-1 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm py-3.5 transition-colors duration-200"
+        >
+          <Phone size={16} />
+          Ligar
+        </a>
+        <Link
+          href="/contactos"
+          className="flex-1 flex items-center justify-center border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white font-semibold text-sm py-3.5 transition-colors duration-200"
+        >
+          Mensagem
+        </Link>
+      </div>
+
       {/* Main content */}
-      <section className="py-20 bg-white">
+      <section className="pt-20 pb-36 lg:py-20 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Images + details */}
