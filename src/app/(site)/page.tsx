@@ -8,7 +8,7 @@ import FeaturedProperties from "@/components/organisms/FeaturedProperties";
 export const metadata: Metadata = {
   title: "Habilux — Investimentos Imobiliários em Viana do Castelo",
   description:
-    "Mediação imobiliária, promoção bancária e certificados energéticos em Viana do Castelo. Mais de 25 anos de experiência. AMI 11192.",
+    "Mediação imobiliária, promoção bancária e certificados energéticos em Viana do Castelo. Mais de 25 anos de experiência. AMI 20458.",
 };
 
 export default function Home() {
@@ -40,10 +40,10 @@ export default function Home() {
               Contactar agora
             </Link>
             <a
-              href="tel:+351258338047"
+              href="tel:+351258100200"
               className="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 text-sm font-semibold tracking-wide hover:border-white transition-colors duration-200"
             >
-              258 338 047
+              258 100 200
             </a>
           </div>
         </div>

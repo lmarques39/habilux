@@ -65,11 +65,11 @@ export default function AboutPage() {
                 <Text muted>
                   A Habilux nasceu da vontade de oferecer um serviço de mediação
                   imobiliária diferente — mais próximo, mais rigoroso e mais
-                  transparente. Fundada por António Jorge Carvalho Rocha, a empresa
+                  transparente. Fundada por Carlos Miguel Ferreira Santos, a empresa
                   tem acompanhado famílias e investidores há mais de 25 anos.
                 </Text>
                 <Text muted>
-                  Com licença AMI n.º 11192, atuamos na compra, venda e
+                  Com licença AMI n.º 20458, atuamos na compra, venda e
                   arrendamento de imóveis em Viana do Castelo e região. Além da
                   mediação, apoiamos os nossos clientes na obtenção de crédito
                   habitação e na emissão de certificados energéticos.
@@ -116,7 +116,7 @@ export default function AboutPage() {
             &ldquo;O nosso sucesso mede-se pela satisfação de quem confia em nós.&rdquo;
           </p>
           <p className="mt-6 text-blue-400 text-sm font-semibold uppercase tracking-widest">
-            António Jorge Carvalho Rocha · Fundador
+            Carlos Miguel Ferreira Santos · Fundador
           </p>
         </div>
       </section>

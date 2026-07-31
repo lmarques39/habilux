@@ -35,10 +35,10 @@ export default function ContactsPage() {
             Contactos
           </Heading>
           <a
-            href="tel:+351258338047"
+            href="tel:+351258100200"
             className="text-4xl sm:text-5xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-200 block mt-2"
           >
-            258 338 047
+            258 100 200
           </a>
         </div>
       </section>
@@ -68,11 +68,11 @@ export default function ContactsPage() {
                   Morada
                 </p>
                 <Text className="text-stone-900 font-medium">
-                  Rua do Sol, n.º 210, r/c esquerdo, Amorosa, Chafé
+                  Rua das Flores, n.º 45
                 </Text>
-                <Text muted>4935-580 Viana do Castelo</Text>
+                <Text muted>4900-000 Viana do Castelo</Text>
                 <a
-                  href="https://maps.google.com/?q=Rua+do+Sol+210+Amorosa+Chaf%C3%A9+Viana+do+Castelo"
+                  href="https://maps.google.com/?q=Viana+do+Castelo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 text-xs font-semibold text-blue-500 hover:text-blue-600 underline underline-offset-4 transition-colors duration-200"
@@ -87,10 +87,10 @@ export default function ContactsPage() {
                   Telefone
                 </p>
                 <a
-                  href="tel:+351258338047"
+                  href="tel:+351258100200"
                   className="flex items-center gap-3 text-stone-900 font-bold text-xl hover:text-blue-500 transition-colors duration-200"
                 >
-                  258 338 047
+                  258 100 200
                   <span className="text-xs font-normal bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full uppercase tracking-wide">
                     Linha principal
                   </span>
@@ -103,10 +103,10 @@ export default function ContactsPage() {
                   Email
                 </p>
                 <a
-                  href="mailto:antoniorc@sapo.pt"
+                  href="mailto:geral@habilux.pt"
                   className="text-stone-900 font-medium hover:text-blue-500 transition-colors duration-200"
                 >
-                  antoniorc@sapo.pt
+                  geral@habilux.pt
                 </a>
               </div>
 
@@ -126,7 +126,7 @@ export default function ContactsPage() {
               </div>
 
               <p className="text-xs text-stone-400 uppercase tracking-widest border-t border-stone-100 pt-6">
-                Licença AMI n.º 11192
+                Licença AMI n.º 20458
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function ContactsPage() {
       {/* Map */}
       <div className="h-[400px] ring-1 ring-stone-200">
         <iframe
-          src="https://maps.google.com/maps?q=Rua+do+Sol+210+Amorosa+Chafe+Viana+do+Castelo&z=16&output=embed"
+          src="https://maps.google.com/maps?q=Viana+do+Castelo&z=13&output=embed"
           width="100%"
           height="100%"
           style={{ border: 0 }}

@@ -28,7 +28,7 @@ export default function Footer() {
               Mais de 25 anos ao serviço dos nossos clientes.
             </p>
             <p className="text-xs text-blue-400 uppercase tracking-widest">
-              AMI n.º 11192
+              AMI n.º 20458
             </p>
           </div>
 
@@ -54,25 +54,25 @@ export default function Footer() {
               Contacto
             </p>
             <a
-              href="tel:+351258338047"
+              href="tel:+351258100200"
               className="flex items-center gap-3 text-sm hover:text-blue-400 transition-colors duration-200"
             >
               <Phone size={14} className="text-blue-400 shrink-0" />
-              258 338 047
+              258 100 200
             </a>
             <a
-              href="mailto:antoniorc@sapo.pt"
+              href="mailto:geral@habilux.pt"
               className="flex items-center gap-3 text-sm hover:text-blue-400 transition-colors duration-200"
             >
               <Mail size={14} className="text-blue-400 shrink-0" />
-              antoniorc@sapo.pt
+              geral@habilux.pt
             </a>
             <div className="flex items-start gap-3 text-sm">
               <MapPin size={14} className="text-blue-400 shrink-0 mt-0.5" />
               <span>
-                Rua do Sol, n.º 210, r/c esquerdo
+                Rua das Flores, n.º 45
                 <br />
-                Amorosa, Chafé · 4935-580 Viana do Castelo
+                4900-000 Viana do Castelo
               </span>
             </div>
           </div>

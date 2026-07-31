@@ -2,7 +2,7 @@ import StatBlock from "@/components/molecules/StatBlock";
 
 const stats = [
   { value: "25+", label: "Anos de experiência", detail: "Desde 2000" },
-  { value: "AMI", label: "Licença 11192", detail: "Mediação certificada" },
+  { value: "AMI", label: "Licença 20458", detail: "Mediação certificada" },
   { value: "3", label: "Serviços especializados", detail: "Imobiliário · Bancário · Energético" },
 ];
 

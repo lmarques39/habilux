@@ -99,7 +99,7 @@ export default async function PropertyDetailPage({
         style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
       >
         <a
-          href="tel:+351258338047"
+          href="tel:+351258100200"
           className="flex-1 flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold text-sm py-3.5 transition-colors duration-200"
         >
           <Phone size={16} />
@@ -184,11 +184,11 @@ export default async function PropertyDetailPage({
                 </Text>
 
                 <a
-                  href="tel:+351258338047"
+                  href="tel:+351258100200"
                   className="flex items-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-4 transition-colors duration-200 mb-4 w-full"
                 >
                   <Phone size={18} />
-                  258 338 047
+                  258 100 200
                 </a>
 
                 <Link
@@ -202,7 +202,7 @@ export default async function PropertyDetailPage({
                   <p className="text-xs text-stone-400 leading-relaxed">
                     Habilux — Mediação Imobiliária
                     <br />
-                    Licença AMI n.º 11192
+                    Licença AMI n.º 20458
                     <br />
                     Viana do Castelo
                   </p>

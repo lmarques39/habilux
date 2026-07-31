@@ -11,7 +11,7 @@ const sections = [
   {
     title: "Quem somos",
     content:
-      "A Habilux — Investimentos Imobiliários é uma empresa de mediação imobiliária com sede em Rua do Sol, n.º 210, r/c esquerdo, Amorosa, Chafé, 4935-580 Viana do Castelo, titular da Licença AMI n.º 11192. Para efeitos do Regulamento Geral sobre a Proteção de Dados (RGPD), a Habilux é o responsável pelo tratamento dos seus dados pessoais.",
+      "A Habilux — Investimentos Imobiliários é uma empresa de mediação imobiliária com sede em Rua das Flores, n.º 45, 4900-000 Viana do Castelo, titular da Licença AMI n.º 20458. Para efeitos do Regulamento Geral sobre a Proteção de Dados (RGPD), a Habilux é o responsável pelo tratamento dos seus dados pessoais.",
   },
   {
     title: "Dados que recolhemos",
@@ -36,7 +36,7 @@ const sections = [
   {
     title: "Os seus direitos",
     content:
-      "Ao abrigo do RGPD, tem direito a aceder, retificar, apagar ou limitar o tratamento dos seus dados pessoais, bem como o direito à portabilidade e à oposição. Para exercer qualquer um destes direitos, contacte-nos através do e-mail antoniorc@sapo.pt ou por carta para a morada indicada acima. Tem ainda o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD) em cnpd.pt.",
+      "Ao abrigo do RGPD, tem direito a aceder, retificar, apagar ou limitar o tratamento dos seus dados pessoais, bem como o direito à portabilidade e à oposição. Para exercer qualquer um destes direitos, contacte-nos através do e-mail geral@habilux.pt ou por carta para a morada indicada acima. Tem ainda o direito de apresentar reclamação à Comissão Nacional de Proteção de Dados (CNPD) em cnpd.pt.",
   },
   {
     title: "Alterações a esta política",

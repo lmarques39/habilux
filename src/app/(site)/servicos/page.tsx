@@ -22,7 +22,7 @@ const services: Service[] = [
     icon: Home,
     title: "Mediação Imobiliária",
     description:
-      "Compramos, vendemos e arrendamos imóveis com um acompanhamento personalizado do início ao fim. Com licença AMI n.º 11192, garantimos um processo seguro, legal e transparente.",
+      "Compramos, vendemos e arrendamos imóveis com um acompanhamento personalizado do início ao fim. Com licença AMI n.º 20458, garantimos um processo seguro, legal e transparente.",
     points: [
       "Avaliação do imóvel sem compromisso",
       "Divulgação em portais imobiliários",
